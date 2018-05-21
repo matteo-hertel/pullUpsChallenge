@@ -64,6 +64,7 @@ typings/
 #Firebase
 .idea
 **/node_modules/*
+**/.runtimeconfig.json
 **/.firebaserc
 */npm-debug.log
 lerna-debug.log
