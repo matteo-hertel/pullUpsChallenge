@@ -4,5 +4,7 @@ admin.initializeApp();
 
 const addSet = require("./handlers/addSet");
 const createTodoist = require("./handlers/createTodoist");
+const todoistWebhook = require("./handlers/todoistWebhook");
 exports.addSet = addSet(admin);
 exports.createTodoist = createTodoist(admin);
+exports.todoistWebhook = todoistWebhook(admin);

@@ -7,15 +7,8 @@ const passedWeeks = weekDifference > 0 ? 0 : weekDifference;
 const baseAmount = parseInt(process.env.BASE_AMOUNT) || 30;
 const upperTreshold = parseInt(process.env.UPPER_TRESHOLD) || 8;
 const lowerTreshold = parseInt(process.env.LOWER_TRESHOLD) || 4;
-
-let env, todoistAPIKey;
-if (process.env.NODE_ENV === "development") {
-  env = process.env.NODE_ENV;
-  todoistAPIKey = process.env.TODOIST_TOKEN;
-} else {
-  env = "production";
-  todoistAPIKey = functions.config().pulluptracking.todoist.token;
-}
+const env = functions.config().pulluptracking.env;
+const todoistAPIKey = functions.config().pulluptracking.todoist.token;
 
 module.exports = {
   env,
