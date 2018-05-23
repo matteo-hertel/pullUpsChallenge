@@ -19,9 +19,12 @@ function createPullupsTask(amount) {
 function generateRandomInteger(min, max) {
   return Math.floor(min + Math.random() * (max + 1 - min));
 }
-function commit(data) {
-  todoist.commit();
-  return data;
+function commit(task) {
+  const taskTempId = task.data.temp_id;
+  const commit = todoist.commit();
+  return commit.then(commitData => {
+    return commitData.temp_id_mapping[taskTempId];
+  });
 }
 function addTask(name) {
   return function addNewTask(projectId) {

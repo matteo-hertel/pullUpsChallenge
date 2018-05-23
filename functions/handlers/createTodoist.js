@@ -10,8 +10,7 @@ function createTodoist(admin) {
     .onCreate((snap, context) => {
       const data = snap.data();
 
-      return createPullupsTask(data.amount).then(task => {
-        const taskId = task.data.id;
+      return createPullupsTask(data.amount).then(taskId => {
         return snap.ref.set(
           {
             todoistID: taskId
