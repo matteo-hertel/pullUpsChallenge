@@ -5,12 +5,13 @@ const { unary } = require("lodash");
 const config = require("./../config");
 const { createSet } = require("./../libs/pullups");
 const { makePullup } = require("./../models/pullups");
+const { upperTreshold, lowerTreshold, totalAmount } = config;
+
+const extractAmount = amount => {
+  return { amount };
+};
 
 function addSet(admin) {
-  const makeAmount = amount => {
-    return { amount };
-  };
-
   const pushToDb = model => {
     return admin
       .firestore()
@@ -22,12 +23,12 @@ function addSet(admin) {
   };
 
   function handle(req, res) {
-    return Promise.all(
-      createSet()
-        .map(makeAmount)
-        .map(unary(makePullup))
-        .map(pushToDb)
-    )
+    const sets = createSet(totalAmount, upperTreshold, lowerTreshold)
+      .map(extractAmount)
+      .map(unary(makePullup))
+      .map(pushToDb);
+
+    return Promise.all(sets)
       .then(snapshots => {
         return res.status(200).send();
       })

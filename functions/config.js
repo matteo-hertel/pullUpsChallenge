@@ -1,23 +1,31 @@
 const functions = require("firebase-functions");
-
 const { getDifferenceInWeeksToToday } = require("./libs/date");
-const startDate = process.env.START_DATE || "2018-05-20";
-const weekDifference = getDifferenceInWeeksToToday(startDate);
-const passedWeeks = weekDifference > 0 ? 0 : weekDifference;
-const baseAmount = parseInt(process.env.BASE_AMOUNT) || 30;
-const upperTreshold = parseInt(process.env.UPPER_TRESHOLD) || 8;
-const lowerTreshold = parseInt(process.env.LOWER_TRESHOLD) || 4;
-const env = functions.config().pulluptracking.env;
-const todoistAPIKey = functions.config().pulluptracking.todoist.token;
 
-module.exports = {
+const {
+  base_amount,
+  end_hour,
   env,
-  todoistAPIKey,
-  todoistProject: "PullUps",
-  startHour: 6,
-  endHour: 9,
+  lower_treshold,
+  start_date,
+  start_hour,
+  todoist: { token },
+  todoist_project,
+  upper_treshold
+} = functions.config().pulluptracking;
+
+const weekDifference = getDifferenceInWeeksToToday(start_date);
+const passedWeeks = weekDifference > 0 ? 0 : weekDifference;
+const int = i => parseInt(i, 10);
+
+const config = {
+  endHour: int(end_hour),
+  env,
+  lowerTreshold: int(lower_treshold) + passedWeeks,
   passedWeeks,
-  totalAmount: baseAmount * (passedWeeks || 1),
-  upperTreshold: upperTreshold + passedWeeks,
-  lowerTreshold: lowerTreshold + passedWeeks
+  todoistAPIKey: token,
+  todoistProject: todoist_project,
+  totalAmount: int(base_amount) * (passedWeeks || 1),
+  upperTreshold: int(upper_treshold) + passedWeeks,
+  startHour: int(start_hour)
 };
+module.exeports = config;
