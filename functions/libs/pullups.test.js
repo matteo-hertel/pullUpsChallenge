@@ -2,8 +2,8 @@ const { createSet } = require("./pullups.js");
 
 describe("Pullups functions", () => {
   test("createSet", () => {
-    const set1 = createSet();
-    expect(set1.length).toBeDefined();
-    expect(set1.length).toBeGreaterThan(0);
+    const set = createSet(20, 8, 4);
+    expect(set.length).toBeDefined();
+    expect(set.length).toBeGreaterThan(0);
   });
 });

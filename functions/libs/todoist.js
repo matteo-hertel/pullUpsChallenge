@@ -49,7 +49,7 @@ function padTime(time) {
   if (time < 10) {
     return `0${time}`;
   }
-  return time;
+  return `${time}`;
 }
 function getProjectId(name) {
   return function getProjectByName(projects) {
@@ -57,4 +57,12 @@ function getProjectId(name) {
     return id;
   };
 }
-module.exports = { createPullupsTask };
+module.exports = {
+  createPullupsTask,
+  __test__: {
+    generateRandomInteger,
+    generateDeadline,
+    getProjectId,
+    padTime
+  }
+};
