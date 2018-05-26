@@ -17,7 +17,7 @@ const weekDifference = getDifferenceInWeeksToToday(start_date);
 const passedWeeks = weekDifference > 0 ? 0 : weekDifference;
 const int = i => parseInt(i, 10);
 
-const config = {
+module.exports = {
   endHour: int(end_hour),
   env,
   lowerTreshold: int(lower_treshold) + passedWeeks,
@@ -28,4 +28,3 @@ const config = {
   upperTreshold: int(upper_treshold) + passedWeeks,
   startHour: int(start_hour)
 };
-module.exeports = config;
