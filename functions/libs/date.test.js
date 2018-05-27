@@ -1,9 +1,9 @@
 const { getDifferenceInWeeksToToday } = require("./date");
 const dayjs = require("dayjs");
 const MockDate = require("mockdate");
-
+const fixeDate = 1520208000000;
 beforeAll(() => {
-  MockDate.set(1520208000000);
+  MockDate.set(fixeDate);
 });
 
 describe("Date functions", () => {
@@ -13,5 +13,8 @@ describe("Date functions", () => {
     expect(getDifferenceInWeeksToToday("2018-05-24")).toBe(-11);
     expect(getDifferenceInWeeksToToday("2018-02-24")).toBe(1);
     expect(getDifferenceInWeeksToToday(new Date())).toBe(0);
+  });
+  test("toUnix", () => {
+    expect(Date.now()).toBe(fixeDate);
   });
 });

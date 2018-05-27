@@ -5,7 +5,7 @@ const pullupModel = {
   todoistID: "",
   completed: false,
   rejected: false,
-  date: new Date().toString()
+  date: Date.now()
 };
 
 function makePullup(extensionObject, baseModel = pullupModel) {
