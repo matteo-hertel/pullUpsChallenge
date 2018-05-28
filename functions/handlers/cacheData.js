@@ -1,7 +1,6 @@
 const uuidv4 = require("uuid/v4");
 const functions = require("firebase-functions");
 
-const { unary } = require("lodash");
 const config = require("./../config");
 
 function cacheData(admin) {
@@ -20,6 +19,7 @@ function cacheData(admin) {
       .collection(`pullupTracking`)
       .doc(config.env)
       .collection("pullups");
+    //Add uncached to all the moddels
     return pullupsRef.where("uncached", "==", true);
   };
   function handle(req, res) {
