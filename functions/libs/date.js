@@ -1,9 +1,14 @@
-const dayjs = require("dayjs");
+const moment = require("moment");
+
+function getDifferenceInWeeksToToday(date) {
+  return moment().diff(moment(date), "weeks");
+}
+
+function getWeekNumer(date) {
+  return moment(date).isoWeek();
+}
 
 function toUnix(date) {
-  return dayjs(date).valueOf();
+  return moment(date).valueOf();
 }
-function getDifferenceInWeeksToToday(date) {
-  return dayjs().diff(dayjs(date), "weeks");
-}
-module.exports = { toUnix, getDifferenceInWeeksToToday };
+module.exports = { getDifferenceInWeeksToToday, getWeekNumer, toUnix };

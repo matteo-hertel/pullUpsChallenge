@@ -1,5 +1,5 @@
-const { getDifferenceInWeeksToToday } = require("./date");
-const dayjs = require("dayjs");
+const { getDifferenceInWeeksToToday, toUnix, getWeekNumer } = require("./date");
+
 const MockDate = require("mockdate");
 const fixeDate = 1520208000000;
 beforeAll(() => {
@@ -14,7 +14,10 @@ describe("Date functions", () => {
     expect(getDifferenceInWeeksToToday("2018-02-24")).toBe(1);
     expect(getDifferenceInWeeksToToday(new Date())).toBe(0);
   });
+  test("getWeekNumer", () => {
+    expect(getWeekNumer(new Date())).toBe(10);
+  });
   test("toUnix", () => {
-    expect(Date.now()).toBe(fixeDate);
+    expect(fixeDate).toBe(toUnix(new Date()));
   });
 });
