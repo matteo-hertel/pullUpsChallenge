@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pullups model should match snapshot 1`] = `
+Object {
+  "amount": 0,
+  "cached": false,
+  "completed": false,
+  "date": 1520208000000,
+  "dateString": "2018-03-05",
+  "rejected": false,
+  "todoistID": "",
+  "weekNumber": 10,
+}
+`;

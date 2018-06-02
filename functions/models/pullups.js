@@ -1,5 +1,5 @@
 const { omit, differenceWith, merge } = require("lodash");
-const { getWeekNumer } = require("./../libs/date");
+const { getWeekNumer, getDataWithFormat } = require("./../libs/date");
 
 const pullupModel = {
   amount: 0,
@@ -9,10 +9,10 @@ const pullupModel = {
   rejected: false,
   todoistID: "",
   weekNumber: getWeekNumer(new Date()),
-  year: new Date().getFullYear()
+  dateString: getDataWithFormat("YYYY-MM-DD")
 };
 
-function makePullup(extensionObject, baseModel = pullupModel) {
+function makePullup(extensionObject = {}, baseModel = pullupModel) {
   const cleanObject = omit(
     extensionObject,
     differenceWith(Object.keys(extensionObject), Object.keys(pullupModel))
