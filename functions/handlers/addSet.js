@@ -11,6 +11,10 @@ const extractAmount = amount => {
   return { amount };
 };
 
+const resolveEmptyOnCondition = (cond, emptyValue) => fn => {
+  return cond ? emptyValue : fn();
+};
+
 function addSet(admin) {
   const pushToDb = model => {
     return admin
@@ -21,14 +25,18 @@ function addSet(admin) {
       .doc(uuidv4())
       .set(model);
   };
-
-  function handle(req, res) {
-    const sets = createSet(totalAmount, upperTreshold, lowerTreshold)
+  const storeSet = () =>
+    createSet(totalAmount, upperTreshold, lowerTreshold)
       .map(extractAmount)
       .map(unary(makePullup))
       .map(pushToDb);
 
-    return Promise.all(sets)
+  function handle(req, res) {
+    const noWorkoutOnSunday = resolveEmptyOnCondition(!new Date().getDay(), []);
+
+    const sets = noWorkoutOnSunday(storeSet);
+
+    return Promise.all([])
       .then(snapshots => {
         return res.status(200).send();
       })
