@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cache model should match snapshot 1`] = `
+Object {
+  "completed": 0,
+  "rejected": 0,
+}
+`;
+
+exports[`Cache model should match snapshot 2`] = `
+Object {
+  "completed": 0,
+  "rejected": 0,
+  "weeks": Object {},
+}
+`;
