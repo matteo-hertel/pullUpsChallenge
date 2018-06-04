@@ -14,13 +14,15 @@ function reduceStatusesFromTask(task) {
     return acc;
   };
 }
-function processCacheUpdate(cache, task) {
+function processCacheUpdate(storedCache, task) {
+  const cache = storedCache ? storedCache : makeAppCache();
+
   const cacheUpdate = POSSIBLE_STATUS.reduce(
     reduceStatusesFromTask(task),
     cache
   );
   const newCache = makeAppCache(cacheUpdate);
-  newCache.weeks = getWeekCacheUpdate(cache.weeks, task);
+  newCache.weeks = getWeekCacheUpdate(cache.weeks || {}, task);
   return newCache;
 }
 

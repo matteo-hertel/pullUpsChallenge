@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cache functions should process cache properly 1`] = `
+Object {
+  "completed": 120,
+  "rejected": 120,
+  "weeks": Object {
+    "0": Object {
+      "completed": 0,
+      "rejected": 0,
+    },
+    "1": Object {
+      "completed": 10,
+      "rejected": 10,
+    },
+    "2": Object {
+      "completed": 10,
+      "rejected": 10,
+    },
+    "8": Object {
+      "completed": 100,
+      "rejected": 100,
+    },
+  },
+}
+`;

@@ -50,7 +50,7 @@ describe("Cache functions", () => {
       rejected: true,
       weekNumber: 8
     };
-    console.log(
+    expect(
       processCacheUpdate(
         processCacheUpdate(
           processCacheUpdate(
@@ -64,6 +64,6 @@ describe("Cache functions", () => {
         ),
         task4
       )
-    );
+    ).toMatchSnapshot();
   });
 });
