@@ -30,10 +30,12 @@ function cacheData(admin) {
 
       const cacheTask = change.after.ref.set({ cached: true }, { merge: true });
 
-      return getCache().then(cache => {
-        const newCache = processCacheUpdate(cache.data(), data);
-        return pushToDb(newCache);
-      });
+      getCache()
+        .then(cache => {
+          const newCache = processCacheUpdate(cache.data(), data);
+          return pushToDb(newCache);
+        })
+        .catch(exc => console.error);
     });
 }
 module.exports = cacheData;
