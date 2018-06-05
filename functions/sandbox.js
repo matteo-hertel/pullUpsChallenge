@@ -41,33 +41,36 @@ function main() {
     .collection("pullups")
     .get();
 
-  return pullups
-    .then(snap => {
-      const docs = [];
-      snap.forEach(doc => {
-        docs.push(doc);
-      });
+  return (
+    pullups
+      .then(snap => {
+        const docs = [];
+        snap.forEach(doc => {
+          docs.push(doc);
+        });
 
-      return docs;
-    })
-    .then(docs => {
-      return promiseSerial(
-        docs.map(change => {
-          const cacheTask = change.ref.set({ cached: true }, { merge: true });
-          const data = change.data();
-          if (data.cached) return () => Promise.resolve();
-          return () =>
-            getCache()
-              .then(cache => {
-                const newCache = processCacheUpdate(cache.data(), data);
-                console.log(newCache);
-                return pushToDb(newCache);
-              })
-              .then(sleep);
-        })
-      );
-    })
-    .then(console.log);
+        return docs;
+      })
+      // .then(docs => {
+      //   //return promiseSerial(
+      //   return docs.map(change => {
+      //     const cacheTask = change.ref.set({ cached: false }, { merge: true });
+      //     return;
+      //     const data = change.data();
+      //     if (data.cached) return () => Promise.resolve();
+      //     return () =>
+      //       getCache()
+      //         .then(cache => {
+      //           const newCache = processCacheUpdate(cache.data(), data);
+      //           console.log(newCache);
+      //           return pushToDb(newCache);
+      //         })
+      //         .then(sleep);
+      //   });
+      //);
+      //})
+      .then(console.log)
+  );
 }
 
 module.exports = main;
