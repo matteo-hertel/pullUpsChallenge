@@ -3,13 +3,15 @@ const admin = require("firebase-admin");
 admin.initializeApp();
 
 const addSet = require("./handlers/addSet");
+const bustCache = require("./handlers/bustCache");
+const cacheAll = require("./handlers/cacheAll.js");
+const cacheData = require("./handlers/cacheData");
 const createTodoist = require("./handlers/createTodoist");
 const todoistWebhook = require("./handlers/todoistWebhook");
-const bustCache = require("./handlers/bustCache");
-const cacheData = require("./handlers/cacheData");
 
 exports.addSet = addSet(admin);
+exports.bustCache = bustCache(admin);
+exports.cacheAll = cacheAll(admin);
+exports.cacheData = cacheData(admin);
 exports.createTodoist = createTodoist(admin);
 exports.todoistWebhook = todoistWebhook(admin);
-exports.cacheData = cacheData(admin);
-exports.bustCache = bustCache(admin);
