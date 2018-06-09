@@ -2,7 +2,6 @@
   <v-app dark>
     <v-navigation-drawer
       v-model="drawer"
-disable-route-watcher
       mini-variant
       clipped
       fixed
@@ -27,7 +26,7 @@ disable-route-watcher
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>{{this.$store.state.appTitle}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>

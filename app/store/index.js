@@ -1,4 +1,7 @@
+import globalConfig from '../nuxt.config'
+
 export const state = () => ({
+  appTitle: globalConfig.head.title,
   sidebar: false
 })
 
