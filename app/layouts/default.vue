@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-model="drawer"
+      v-model="$store.state.drawer"
       mini-variant
       clipped
       fixed
@@ -19,14 +19,14 @@
             <v-icon v-html="item.icon"></v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
+            <v-list-tile-title v-text="$store.state.appTitle"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>{{this.$store.state.appTitle}}</v-toolbar-title>
+      <v-toolbar-side-icon @click.stop="toggleDrawer"></v-toolbar-side-icon>
+      <v-toolbar-title>{{$store.state.appTitle}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
@@ -34,7 +34,7 @@
       </v-container>
     </v-content>
     <v-footer app fixed>
-      <span class='ml-3'>&copy; 2017</span>
+      <span class='ml-3'>&copy; {{year}}</span>
     </v-footer>
   </v-app>
 </template>
@@ -43,12 +43,16 @@
 export default {
   data: () => {
     return {
-      drawer: true,
       items: [
         { icon: 'apps', title: 'Welcome', to: '/' },
         { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
       ],
-      title: 'Vuetify.js'
+      year: new Date().getFullYear()
+    }
+  },
+  methods: {
+    toggleDrawer() {
+      this.$store.commit('toggleDrawer')
     }
   }
 }

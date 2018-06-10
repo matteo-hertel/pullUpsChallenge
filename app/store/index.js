@@ -2,11 +2,11 @@ import globalConfig from '../nuxt.config'
 
 export const state = () => ({
   appTitle: globalConfig.head.title,
-  sidebar: false
+  drawer: false
 })
 
 export const mutations = {
-  toggleSidebar (state) {
-    state.sidebar = !state.sidebar
+  toggleDrawer(state) {
+    state.drawer = !state.drawer
   }
 }
