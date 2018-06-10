@@ -3,6 +3,7 @@ module.exports = {
   /*
   ** Headers of the page
   */
+  lol: true,
   head: {
     title: 'PullUpTracking',
     meta: [
@@ -23,7 +24,13 @@ module.exports = {
       }
     ]
   },
-  plugins: ['~/plugins/vuetify.js'],
+  plugins: [
+    '~/plugins/vuetify.js',
+    {
+      src: '~/plugins/firestore',
+      ssr: false
+    }
+  ],
   css: ['~/assets/style/app.styl'],
   /*
   ** Customize the progress bar color
@@ -38,7 +45,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
