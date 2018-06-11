@@ -9,7 +9,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "getEnvConfig": "echo $FIREBASE_CONFIG > firebaseCOnfig.json"
+    "getEnvConfig": "echo $FIREBASE_CONFIG > firebaseConfig.json"
   },
   "dependencies": {
     "firebase": "^5.0.4",
