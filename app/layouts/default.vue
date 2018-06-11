@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-model="$store.state.drawer"
+      v-model="drawer"
       mini-variant
       clipped
       fixed
@@ -43,6 +43,7 @@
 export default {
   data: () => {
     return {
+      drawer: false,
       items: [
         { icon: 'apps', title: 'Welcome', to: '/' },
         { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
@@ -52,7 +53,7 @@ export default {
   },
   methods: {
     toggleDrawer() {
-      this.$store.commit('toggleDrawer')
+      this.drawer = !this.drawer
     }
   }
 }

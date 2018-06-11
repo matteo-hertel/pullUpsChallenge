@@ -1,4 +1,5 @@
 const firebaseConfig = require('./firebaseConfig.json')
+
 module.exports = {
   apiKey: firebaseConfig.apiKey,
   authDomain: firebaseConfig.authDomain,

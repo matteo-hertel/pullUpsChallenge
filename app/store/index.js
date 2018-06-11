@@ -1,43 +1,61 @@
-// import firebase from 'firebase'
-// import { firebaseMutations, firebaseAction } from 'vuexfire'
 import globalConfig from '../nuxt.config'
+import Vue from 'vue'
 
 export const state = () => ({
   appTitle: globalConfig.head.title,
-  drawer: false,
-  stats: {},
-  isLoading: true
+  isLoading: true,
+  showError: false
 })
 
-export const mutations = {
-  // ...firebaseMutations,
-  toggleLodingState(state) {
-    state.isLoading = !state.isLoading
+export const getters = {
+  allTimeAverageWeek: state => {
+    try {
+      return state.stats.average
+    } catch (exc) {
+      return 0
+    }
   },
-  toggleDrawer(state) {
-    state.drawer = !state.drawer
+  currentWeekCompleted: state => {
+    try {
+      return state.stats.currentWeek.completed
+    } catch (exc) {
+      return 0
+    }
+  },
+  currentWeekRejected: state => {
+    try {
+      return state.stats.currentWeek.rejected
+    } catch (exc) {
+      return 0
+    }
+  },
+  allTimeRejected: state => {
+    try {
+      return state.stats.rejected
+    } catch (exc) {
+      return 0
+    }
+  },
+  allTimeCompleted: state => {
+    try {
+      return state.stats.completed
+    } catch (exc) {
+      return 0
+    }
+  },
+  loadingState: state => state.isLoading
+}
+export const mutations = {
+  storeStats(state, stats) {
+    Vue.set(state, 'stats', stats)
+  },
+  toggleLodingState(state) {
+    Vue.set(state, 'isLoading', !state.isLoading)
   }
 }
-
-// const createStore = () => {
-//  return new Vuex.Store({
-//    state: {
-//      user: null,
-//      account: null
-//    },
-//    getters: {
-//      isAuthenticated (state) {
-//        return !!state.user
-//      }
-//    },
-//    actions: ,
-//    mutations: {
-//      setUser (state, user) {
-//        state.user = user
-//        return this.dispatch('setAccountRef', `accounts/${state.user.uid}`)
-//      }
-//    }
-//  })
-// }
-//
-// export default createStore
+export const actions = {
+  storeStats({ commit, dispatch }, payload) {
+    commit('storeStats', payload)
+    commit('toggleLodingState')
+  }
+}
