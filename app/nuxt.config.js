@@ -9,6 +9,11 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+      { name: 'apple-mobile-web-app-title', content: 'Chatty Images' },
+      { name: 'msapplication-TileImage', content: '/icons/144.png' },
+      { name: 'msapplication-TileColor', content: '#000' },
       {
         hid: 'description',
         name: 'description',
@@ -17,6 +22,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', href: '/icons/144.png.ico' },
       {
         rel: 'stylesheet',
         href:

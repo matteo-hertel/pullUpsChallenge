@@ -49,13 +49,16 @@ export const mutations = {
   storeStats(state, stats) {
     Vue.set(state, 'stats', stats)
   },
-  toggleLodingState(state) {
-    Vue.set(state, 'isLoading', !state.isLoading)
+  stopLoading(state) {
+    Vue.set(state, 'isLoading', false)
+  },
+  startLoading(state) {
+    Vue.set(state, 'isLoading', true)
   }
 }
 export const actions = {
   storeStats({ commit, dispatch }, payload) {
     commit('storeStats', payload)
-    commit('toggleLodingState')
+    commit('stopLoading')
   }
 }
