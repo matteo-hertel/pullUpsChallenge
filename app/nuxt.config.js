@@ -42,6 +42,7 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: colors.blue.darken2 },
+  modules: ['@nuxtjs/dotenv', '@nuxtjs/pwa'],
   /*
   ** Build configuration
   */

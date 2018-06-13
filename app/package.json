@@ -1,17 +1,18 @@
 {
   "name": "pulluptracking",
   "version": "1.0.0",
-  "description": "Nuxt.js + Vuetify.js project",
+  "description": "Pullup tracking to push the limit!",
   "author": "Matteo Hertel <info@matteohertel.com>",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
-    "getEnvConfig": "echo $FIREBASE_CONFIG > ./firebaseConfig.json"
+    "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/dotenv": "^1.1.1",
+    "@nuxtjs/pwa": "^2.0.8",
     "firebase": "^5.0.4",
     "nuxt": "^1.0.0",
     "vuetify": "^1.0.0",
