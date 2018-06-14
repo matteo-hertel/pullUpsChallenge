@@ -9,5 +9,5 @@ npm-debug.log
 
 # Nuxt generate
 dist
-.env
+firebaseConfig.json
 sw.*

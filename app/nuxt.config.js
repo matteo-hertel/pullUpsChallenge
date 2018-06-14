@@ -1,9 +1,9 @@
 const colors = require('vuetify/es5/util/colors').default
+
 module.exports = {
   /*
   ** Headers of the page
   */
-  lol: true,
   head: {
     title: 'PullUpTracking',
     meta: [
@@ -22,7 +22,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'icon', href: '/icons/144.png.ico' },
+      { rel: 'icon', href: '/icons/144.png' },
       {
         rel: 'stylesheet',
         href:
@@ -42,10 +42,23 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: colors.blue.darken2 },
-  modules: ['@nuxtjs/dotenv', '@nuxtjs/pwa'],
+  modules: ['@nuxtjs/pwa'],
+  manifest: {
+    name: 'PullUpTracking',
+    theme_color: colors.grey.darken3,
+    background_color: colors.grey.darken3
+  },
   /*
   ** Build configuration
   */
+  env: {
+    APIKEY: process.env.API_KEY,
+    AUTHDOMAIN: process.env.AUTH_DOMAIN,
+    DATABASEURL: process.env.DATABASE_URL,
+    PROJECTID: process.env.PROJECT_ID,
+    STORAGEBUCKET: process.env.STORAGE_BUCKET,
+    MESSAGINGSENDERID: process.env.MESSAGING_SENDER_ID
+  },
   build: {
     vendor: ['~/plugins/vuetify.js'],
     extractCSS: true,
