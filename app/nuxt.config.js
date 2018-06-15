@@ -1,3 +1,4 @@
+const firebaseConfig = require('./firebaseConfig.json')
 const colors = require('vuetify/es5/util/colors').default
 
 module.exports = {
@@ -46,19 +47,12 @@ module.exports = {
   manifest: {
     name: 'PullUpTracking',
     theme_color: colors.grey.darken3,
-    background_color: colors.grey.darken3
+    background_color: colors.grey.darken3,
+    gcm_sender_id: firebaseConfig.messagingSenderId
   },
   /*
   ** Build configuration
   */
-  env: {
-    APIKEY: process.env.API_KEY,
-    AUTHDOMAIN: process.env.AUTH_DOMAIN,
-    DATABASEURL: process.env.DATABASE_URL,
-    PROJECTID: process.env.PROJECT_ID,
-    STORAGEBUCKET: process.env.STORAGE_BUCKET,
-    MESSAGINGSENDERID: process.env.MESSAGING_SENDER_ID
-  },
   build: {
     vendor: ['~/plugins/vuetify.js'],
     extractCSS: true,
