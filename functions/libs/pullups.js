@@ -1,5 +1,7 @@
 function createSet(total, upperTreshold, lowerTreshold) {
-  return new Array(total).fill(lowerTreshold).map(luckySet(upperTreshold));
+  return new Array(parseInt(total))
+    .fill(lowerTreshold)
+    .map(luckySet(upperTreshold));
 }
 function luckySet(max) {
   return function luckyDraw(n) {

@@ -15,6 +15,21 @@ const resolveEmptyOnCondition = (cond, emptyValue) => fn => {
   return cond ? emptyValue : fn();
 };
 
+function addSetPeek() {
+  return functions.https.onRequest(handle);
+
+  function handle(req, res) {
+    const sets = makeSet();
+
+    return Promise.resolve()
+      .then(snapshots => {
+        return res.status(200).send(sets);
+      })
+      .catch(() => {
+        return res.status(500).send();
+      });
+  }
+}
 function addSet(admin) {
   const pushToDb = model => {
     return admin
