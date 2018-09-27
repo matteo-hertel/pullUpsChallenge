@@ -1,19 +1,23 @@
-const uuidv4 = require("uuid/v4");
-const functions = require("firebase-functions");
+const uuidv4 = require('uuid/v4');
+const functions = require('firebase-functions');
 
-const { unary } = require("lodash");
-const config = require("./../config");
-const { createSet } = require("./../libs/pullups");
-const { makePullup } = require("./../models/pullups");
-const { upperTreshold, lowerTreshold, totalAmount } = config;
+const {unary} = require('lodash');
+const config = require('./../config');
+const {createSet} = require('./../libs/pullups');
+const {makePullup} = require('./../models/pullups');
+const {upperTreshold, lowerTreshold, totalAmount} = config;
 
 const extractAmount = amount => {
-  return { amount };
+  return {amount};
 };
 
 const resolveEmptyOnCondition = (cond, emptyValue) => fn => {
   return cond ? emptyValue : fn();
 };
+const makeSet = () =>
+  createSet(totalAmount, upperTreshold, lowerTreshold)
+    .map(extractAmount)
+    .map(unary(makePullup));
 
 function addSetPeek() {
   return functions.https.onRequest(handle);
@@ -36,22 +40,16 @@ function addSet(admin) {
       .firestore()
       .collection(`pullupTracking`)
       .doc(config.env)
-      .collection("pullups")
+      .collection('pullups')
       .doc(uuidv4())
       .set(model);
   };
-  const storeSet = () =>
-    createSet(totalAmount, upperTreshold, lowerTreshold)
-      .map(extractAmount)
-      .map(unary(makePullup))
-      .map(pushToDb);
-
   function handle(req, res) {
     const noWorkoutOnSunday = resolveEmptyOnCondition(!new Date().getDay(), []);
 
-    const sets = noWorkoutOnSunday(storeSet);
+    const sets = noWorkoutOnSunday(makeSet.map(pushToDb));
 
-    return Promise.all([])
+    return Promise.resolve()
       .then(snapshots => {
         return res.status(200).send();
       })
@@ -61,4 +59,4 @@ function addSet(admin) {
   }
   return functions.https.onRequest(handle);
 }
-module.exports = addSet;
+module.exports = {addSet, addSetPeek};
