@@ -1,15 +1,16 @@
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 admin.initializeApp();
 
-const addSet = require("./handlers/addSet");
-const bustCache = require("./handlers/bustCache");
-const cacheAll = require("./handlers/cacheAll.js");
-const cacheData = require("./handlers/cacheData");
-const createTodoist = require("./handlers/createTodoist");
-const todoistWebhook = require("./handlers/todoistWebhook");
+const {addSet, addSetPeek} = require('./handlers/addSet');
+const bustCache = require('./handlers/bustCache');
+const cacheAll = require('./handlers/cacheAll.js');
+const cacheData = require('./handlers/cacheData');
+const createTodoist = require('./handlers/createTodoist');
+const todoistWebhook = require('./handlers/todoistWebhook');
 
-exports.addSet = addSet(admin);
+exports.addSet = addSet();
+exports.addSetPeek = addSetPeek();
 exports.bustCache = bustCache(admin);
 exports.cacheAll = cacheAll(admin);
 exports.cacheData = cacheData(admin);
