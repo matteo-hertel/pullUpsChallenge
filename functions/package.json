@@ -2,6 +2,9 @@
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
+    "lint": "eslint . --ext js,jsx",
+    "lint:fix": "eslint . --ext js,jsx --fix",
+    "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx}\"",
     "lint": "eslint .",
     "serve": "NODE_ENV=development firebase serve --only functions",
     "shell": "NODE_ENV=development firebase functions:shell",
@@ -23,6 +26,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "eslint-config-skyscanner-with-prettier": "^0.3.1",
     "mockdate": "^2.0.2"
   },
   "private": true
