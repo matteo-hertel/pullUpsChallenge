@@ -1,6 +1,6 @@
-const functions = require("firebase-functions");
+const functions = require('firebase-functions');
 
-const config = require("./../config");
+const config = require('./../config');
 
 function bustCache(admin) {
   const getTasks = () => {
@@ -8,15 +8,15 @@ function bustCache(admin) {
       .firestore()
       .collection(`pullupTracking`)
       .doc(config.env)
-      .collection("pullups");
+      .collection('pullups');
   };
   const deleteCacheDocument = () => {
     return admin
       .firestore()
       .collection(`pullupTracking`)
       .doc(config.env)
-      .collection("cache")
-      .doc("appCache")
+      .collection('cache')
+      .doc('appCache')
       .delete();
   };
   function handle(req, res) {
@@ -42,7 +42,7 @@ function bustCache(admin) {
 
 function getCollectionDocs(snapshot) {
   if (!snapshot.size) {
-    throw new Error("Document does not exists");
+    throw new Error('Document does not exists');
   }
   const documents = [];
   snapshot.forEach(doc => {

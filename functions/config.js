@@ -7,7 +7,7 @@ const {
   lower_treshold,
   start_date,
   start_hour,
-  todoist: {token},
+  todoist: { token },
   todoist_project,
   upper_treshold,
 } = functions.config().pulluptracking;

@@ -1,5 +1,5 @@
-const config = require("./../config");
-const TodoistAPI = require("todoist-js").default;
+const config = require('./../config');
+const TodoistAPI = require('todoist-js').default;
 const { todoistAPIKey, todoistProject, startHour, endHour } = config;
 const todoist = new TodoistAPI(todoistAPIKey);
 const getTodoistProjectId = getProjectId(todoistProject);
@@ -29,20 +29,20 @@ function commit(task) {
 function addTask(name) {
   return function addNewTask(projectId) {
     return todoist.items.add(name, projectId, {
-      date_string: "Today"
+      date_string: 'Today',
     });
   };
 }
 function addReminder(task) {
   todoist.reminders.add(task.data.id, {
     date_string: generateDeadline(),
-    service: "push"
+    service: 'push',
   });
   return task;
 }
 function generateDeadline() {
   return `Today at ${generateRandomInteger(startHour, endHour)}:${padTime(
-    generateRandomInteger(0, 59)
+    generateRandomInteger(0, 59),
   )} pm`;
 }
 function padTime(time) {
@@ -63,6 +63,6 @@ module.exports = {
     generateRandomInteger,
     generateDeadline,
     getProjectId,
-    padTime
-  }
+    padTime,
+  },
 };

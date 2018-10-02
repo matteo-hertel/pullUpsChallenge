@@ -1,20 +1,20 @@
-const functions = require("firebase-functions");
-const { processCacheUpdate } = require("./../libs/cache");
+const functions = require('firebase-functions');
+const { processCacheUpdate } = require('./../libs/cache');
 
-const config = require("./../config");
+const config = require('./../config');
 
 function cacheAll(admin) {
   const baseCollection = admin
     .firestore()
     .collection(`pullupTracking`)
     .doc(config.env);
-  const cacheCollection = baseCollection.collection("cache").doc("appCache");
+  const cacheCollection = baseCollection.collection('cache').doc('appCache');
   const getCacheRef = () => cacheCollection.get();
 
   const getUncachedTasksRef = () =>
     baseCollection
-      .collection("pullups")
-      .where("cached", "==", false)
+      .collection('pullups')
+      .where('cached', '==', false)
       .get()
       .then(getCollectionDocs);
 
@@ -22,7 +22,7 @@ function cacheAll(admin) {
 
   function getCollectionDocs(snapshot) {
     if (!snapshot.size) {
-      throw new Error("Document does not exists");
+      throw new Error('Document does not exists');
     }
     const documents = [];
     snapshot.forEach(doc => {
@@ -54,7 +54,7 @@ function cacheAll(admin) {
         return res.status(200).send();
       })
       .catch(exc => {
-        console.error("Unnecessary Call to Cache All", exc);
+        console.error('Unnecessary Call to Cache All', exc);
         return res.status(200).send();
       });
   }

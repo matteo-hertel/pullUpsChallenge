@@ -1,14 +1,14 @@
 const uuidv4 = require('uuid/v4');
 const functions = require('firebase-functions');
 
-const {unary} = require('lodash');
+const { unary } = require('lodash');
 const config = require('./../config');
-const {createSet} = require('./../libs/pullups');
-const {makePullup} = require('./../models/pullups');
-const {upperTreshold, lowerTreshold, totalAmount} = config;
+const { createSet } = require('./../libs/pullups');
+const { makePullup } = require('./../models/pullups');
+const { upperTreshold, lowerTreshold, totalAmount } = config;
 
 const extractAmount = amount => {
-  return {amount};
+  return { amount };
 };
 
 const resolveEmptyOnCondition = (cond, emptyValue) => fn => {
@@ -59,4 +59,4 @@ function addSet(admin) {
   }
   return functions.https.onRequest(handle);
 }
-module.exports = {addSet, addSetPeek};
+module.exports = { addSet, addSetPeek };

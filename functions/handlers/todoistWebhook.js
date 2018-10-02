@@ -1,9 +1,9 @@
-const functions = require("firebase-functions");
+const functions = require('firebase-functions');
 
-const { unary } = require("lodash");
-const config = require("./../config");
-const { createSet } = require("./../libs/pullups");
-const { makePullup } = require("./../models/pullups");
+const { unary } = require('lodash');
+const config = require('./../config');
+const { createSet } = require('./../libs/pullups');
+const { makePullup } = require('./../models/pullups');
 
 function todoistWebhook(admin) {
   const getTask = id => {
@@ -11,13 +11,13 @@ function todoistWebhook(admin) {
       .firestore()
       .collection(`pullupTracking`)
       .doc(config.env)
-      .collection("pullups");
-    return pullupsRef.where("todoistID", "==", id);
+      .collection('pullups');
+    return pullupsRef.where('todoistID', '==', id);
   };
   function handle(req, res) {
     const {
       event_name,
-      event_data: { id }
+      event_data: { id },
     } = req.body;
 
     return getTask(id)
@@ -44,7 +44,7 @@ function getFirst(arr) {
 }
 function getCollectionDocs(snapshot) {
   if (!snapshot.size) {
-    throw new Error("Document does not exists");
+    throw new Error('Document does not exists');
   }
   const documents = [];
   snapshot.forEach(doc => {
@@ -53,18 +53,18 @@ function getCollectionDocs(snapshot) {
   return documents;
 }
 function setAppropriateKey(action) {
-  if (action === "item:completed") {
+  if (action === 'item:completed') {
     return {
-      completed: true
+      completed: true,
     };
   }
-  if (action === "item:deleted") {
+  if (action === 'item:deleted') {
     return {
-      rejected: true
+      rejected: true,
     };
   }
   return {
-    invalidKey: action
+    invalidKey: action,
   };
 }
 module.exports = todoistWebhook;

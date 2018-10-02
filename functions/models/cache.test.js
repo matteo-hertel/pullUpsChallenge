@@ -2,34 +2,34 @@ const {
   taskCacheModel,
   makeTaskCache,
   makeAppCache,
-  appCacheModel
-} = require("./cache");
+  appCacheModel,
+} = require('./cache');
 
 const getDiffentKeys = keys => {
   return function(key) {
     return keys.indexOf(key) === -1 ? true : false;
   };
 };
-describe("Cache model", () => {
-  it("should not contain extraneous keys in taskCacheModel", () => {
+describe('Cache model', () => {
+  it('should not contain extraneous keys in taskCacheModel', () => {
     const unsanitisedObject = {
       rejected: 50,
       completed: 50,
-      foo: "bar",
-      bar: "foo"
+      foo: 'bar',
+      bar: 'foo',
     };
 
     const cache = makeTaskCache(unsanitisedObject);
 
     expect(
-      Object.keys(cache).filter(getDiffentKeys(Object.keys(taskCacheModel)))
+      Object.keys(cache).filter(getDiffentKeys(Object.keys(taskCacheModel))),
     ).toHaveLength(0);
   });
 
-  it("should be able to update as many time as neded", () => {
+  it('should be able to update as many time as neded', () => {
     const finalForm = {
       completed: 50,
-      rejected: 0
+      rejected: 0,
     };
 
     const cache = makeTaskCache({});
@@ -38,36 +38,36 @@ describe("Cache model", () => {
 
     const finalUpdate = makeTaskCache({ rejected: 0 }, update2);
     Object.keys(finalForm).map(k =>
-      expect(finalUpdate[k]).toEqual(finalForm[k])
+      expect(finalUpdate[k]).toEqual(finalForm[k]),
     );
   });
-  it("should be able to make a cache without extension object", () => {
+  it('should be able to make a cache without extension object', () => {
     expect(makeTaskCache()).toEqual(taskCacheModel);
   });
-  it("should match snapshot", () => {
+  it('should match snapshot', () => {
     expect(taskCacheModel).toMatchSnapshot();
   });
-  it("should not contain extraneous keys in appCacheModel", () => {
+  it('should not contain extraneous keys in appCacheModel', () => {
     const unsanitisedObject = {
       rejected: 50,
       completed: 50,
-      foo: "bar",
-      bar: "foo",
-      weeks: {}
+      foo: 'bar',
+      bar: 'foo',
+      weeks: {},
     };
 
     const cache = makeAppCache(unsanitisedObject);
 
     expect(
-      Object.keys(cache).filter(getDiffentKeys(Object.keys(appCacheModel)))
+      Object.keys(cache).filter(getDiffentKeys(Object.keys(appCacheModel))),
     ).toHaveLength(0);
   });
 
-  it("should be able to update as many time as neded", () => {
+  it('should be able to update as many time as neded', () => {
     const finalForm = {
       completed: 50,
       rejected: 0,
-      weeks: {}
+      weeks: {},
     };
 
     const cache = makeAppCache({});
@@ -76,13 +76,13 @@ describe("Cache model", () => {
 
     const finalUpdate = makeAppCache({ rejected: 0 }, update2);
     Object.keys(finalForm).map(k =>
-      expect(finalUpdate[k]).toEqual(finalForm[k])
+      expect(finalUpdate[k]).toEqual(finalForm[k]),
     );
   });
-  it("should be able to make a cache without extension object", () => {
+  it('should be able to make a cache without extension object', () => {
     expect(makeAppCache()).toEqual(appCacheModel);
   });
-  it("should match snapshot", () => {
+  it('should match snapshot', () => {
     expect(appCacheModel).toMatchSnapshot();
   });
 });

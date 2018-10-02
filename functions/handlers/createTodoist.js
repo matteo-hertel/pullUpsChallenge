@@ -1,8 +1,8 @@
-const functions = require("firebase-functions");
+const functions = require('firebase-functions');
 
-const { unary } = require("lodash");
-const config = require("./../config");
-const { createPullupsTask } = require("./../libs/todoist");
+const { unary } = require('lodash');
+const config = require('./../config');
+const { createPullupsTask } = require('./../libs/todoist');
 
 function createTodoist(admin) {
   return functions.firestore
@@ -13,9 +13,9 @@ function createTodoist(admin) {
       return createPullupsTask(data.amount).then(taskId => {
         return snap.ref.set(
           {
-            todoistID: taskId
+            todoistID: taskId,
           },
-          { merge: true }
+          { merge: true },
         );
       });
     });

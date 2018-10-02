@@ -10,4 +10,4 @@ function luckySet(max) {
   };
 }
 
-module.exports = {createSet};
+module.exports = { createSet };

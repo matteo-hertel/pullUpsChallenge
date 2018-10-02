@@ -3,8 +3,8 @@ const {
   makeTaskCache,
   makeAppCache,
   appCacheModel,
-  POSSIBLE_STATUS
-} = require("./../models/cache");
+  POSSIBLE_STATUS,
+} = require('./../models/cache');
 
 function reduceStatusesFromTask(task) {
   return function reduceStatuses(acc, status) {
@@ -19,7 +19,7 @@ function processCacheUpdate(storedCache, task) {
 
   const cacheUpdate = POSSIBLE_STATUS.reduce(
     reduceStatusesFromTask(task),
-    cache
+    cache,
   );
   const newCache = makeAppCache(cacheUpdate);
   newCache.weeks = getWeekCacheUpdate(cache.weeks || {}, task);
@@ -32,12 +32,12 @@ function getWeekCacheUpdate(weekCache, task) {
   }
   const taskUpdate = POSSIBLE_STATUS.reduce(
     reduceStatusesFromTask(task),
-    weekCache[task.weekNumber]
+    weekCache[task.weekNumber],
   );
 
   weekCache[task.weekNumber] = makeTaskCache(
     taskUpdate,
-    weekCache[task.weekNumber]
+    weekCache[task.weekNumber],
   );
   return weekCache;
 }

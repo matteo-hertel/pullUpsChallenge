@@ -1,4 +1,4 @@
-const {createSet} = require('./pullups.js');
+const { createSet } = require('./pullups.js');
 
 describe('Pullups functions', () => {
   test('createSet', () => {

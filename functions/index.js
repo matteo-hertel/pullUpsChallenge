@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
 
-const {addSet, addSetPeek} = require('./handlers/addSet');
+const { addSet, addSetPeek } = require('./handlers/addSet');
 const bustCache = require('./handlers/bustCache');
 const cacheAll = require('./handlers/cacheAll.js');
 const cacheData = require('./handlers/cacheData');

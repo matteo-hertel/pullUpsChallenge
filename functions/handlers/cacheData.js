@@ -1,7 +1,7 @@
-const functions = require("firebase-functions");
+const functions = require('firebase-functions');
 
-const config = require("./../config");
-const { processCacheUpdate } = require("./../libs/cache");
+const config = require('./../config');
+const { processCacheUpdate } = require('./../libs/cache');
 
 function cacheData(admin) {
   const getCache = () => {
@@ -9,8 +9,8 @@ function cacheData(admin) {
       .firestore()
       .collection(`pullupTracking`)
       .doc(config.env)
-      .collection("cache")
-      .doc("appCache")
+      .collection('cache')
+      .doc('appCache')
       .get();
   };
   const emptyPromise = Promise.resolve(null);

@@ -1,11 +1,11 @@
-const moment = require("moment");
+const moment = require('moment');
 
 function getDataWithFormat(format, date = false) {
   return moment(date ? date : new Date()).format(format);
 }
 
 function getDifferenceInWeeksToToday(date) {
-  return moment().diff(moment(date), "weeks");
+  return moment().diff(moment(date), 'weeks');
 }
 
 function getWeekNumer(date) {
@@ -19,5 +19,5 @@ module.exports = {
   getDataWithFormat,
   getDifferenceInWeeksToToday,
   getWeekNumer,
-  toUnix
+  toUnix,
 };

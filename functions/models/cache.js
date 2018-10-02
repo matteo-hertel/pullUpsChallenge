@@ -1,21 +1,21 @@
-const { omit, differenceWith, merge } = require("lodash");
+const { omit, differenceWith, merge } = require('lodash');
 
-const POSSIBLE_STATUS = ["completed", "rejected"];
+const POSSIBLE_STATUS = ['completed', 'rejected'];
 
 const taskCacheModel = {
   completed: 0,
-  rejected: 0
+  rejected: 0,
 };
 
 const appCacheModel = merge({}, taskCacheModel, {
-  weeks: {}
+  weeks: {},
 });
 
 function makeCache(base) {
   return function extendBaseModel(extensionObject = {}, baseModel = base) {
     const cleanObject = omit(
       extensionObject,
-      differenceWith(Object.keys(extensionObject), Object.keys(taskCacheModel))
+      differenceWith(Object.keys(extensionObject), Object.keys(taskCacheModel)),
     );
     return merge({}, baseModel, cleanObject);
   };
@@ -28,5 +28,5 @@ module.exports = {
   makeAppCache,
   taskCacheModel,
   makeTaskCache,
-  POSSIBLE_STATUS
+  POSSIBLE_STATUS,
 };
