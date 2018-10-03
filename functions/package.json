@@ -2,10 +2,9 @@
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
-    "lint": "eslint . --ext js,jsx",
+    "lint": "eslint .",
     "lint:fix": "eslint . --ext js,jsx --fix",
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx}\"",
-    "lint": "eslint .",
     "serve": "NODE_ENV=development firebase serve --only functions",
     "shell": "NODE_ENV=development firebase functions:shell",
     "start": "NODE_ENV=development npm run shell",
