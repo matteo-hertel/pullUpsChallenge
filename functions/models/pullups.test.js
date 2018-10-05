@@ -1,15 +1,15 @@
 const MockDate = require('mockdate');
+
 const fixeDate = 1520208000000;
 
 MockDate.set(fixeDate);
 
 const { pullupModel, makePullup } = require('./pullups.js');
 
-const getDiffentKeys = keys => {
-  return function(key) {
-    return keys.indexOf(key) === -1 ? true : false;
+const getDiffentKeys = keys =>
+  function(key) {
+    return keys.indexOf(key) === -1;
   };
-};
 describe('Pullups model', () => {
   it('should not contain extraneous keys', () => {
     const unsanitisedObject = {

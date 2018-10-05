@@ -1,5 +1,6 @@
 const config = require('./../config');
 const TodoistAPI = require('todoist-js').default;
+
 const { todoistAPIKey, todoistProject, startHour, endHour } = config;
 const todoist = new TodoistAPI(todoistAPIKey);
 const getTodoistProjectId = getProjectId(todoistProject);
@@ -22,9 +23,7 @@ function generateRandomInteger(min, max) {
 function commit(task) {
   const taskTempId = task.data.temp_id;
   const commit = todoist.commit();
-  return commit.then(commitData => {
-    return commitData.temp_id_mapping[taskTempId];
-  });
+  return commit.then(commitData => commitData.temp_id_mapping[taskTempId]);
 }
 function addTask(name) {
   return function addNewTask(projectId) {

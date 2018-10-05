@@ -5,15 +5,13 @@ const { unary } = require('lodash');
 const config = require('./../config');
 const { createSet } = require('./../libs/pullups');
 const { makePullup } = require('./../models/pullups');
+
 const { upperTreshold, lowerTreshold, totalAmount } = config;
 
-const extractAmount = amount => {
-  return { amount };
-};
+const extractAmount = amount => ({ amount });
 
-const resolveEmptyOnCondition = (cond, emptyValue) => fn => {
-  return cond ? emptyValue : fn();
-};
+const resolveEmptyOnCondition = (cond, emptyValue) => fn =>
+  cond ? emptyValue : fn();
 const makeSet = () =>
   createSet(totalAmount, upperTreshold, lowerTreshold)
     .map(extractAmount)
@@ -26,36 +24,27 @@ function addSetPeek() {
     const sets = makeSet();
 
     return Promise.resolve()
-      .then(snapshots => {
-        return res.status(200).send(sets);
-      })
-      .catch(() => {
-        return res.status(500).send();
-      });
+      .then(snapshots => res.status(200).send(sets))
+      .catch(() => res.status(500).send());
   }
 }
 function addSet(admin) {
-  const pushToDb = model => {
-    return admin
+  const pushToDb = model =>
+    admin
       .firestore()
       .collection(`pullupTracking`)
       .doc(config.env)
       .collection('pullups')
       .doc(uuidv4())
       .set(model);
-  };
   function handle(req, res) {
     const noWorkoutOnSunday = resolveEmptyOnCondition(!new Date().getDay(), []);
 
-    const sets = noWorkoutOnSunday(makeSet.map(pushToDb));
+    const sets = noWorkoutOnSunday(() => makeSet().map(pushToDb));
 
     return Promise.resolve()
-      .then(snapshots => {
-        return res.status(200).send();
-      })
-      .catch(() => {
-        return res.status(500).send();
-      });
+      .then(snapshots => res.status(200).send())
+      .catch(() => res.status(500).send());
   }
   return functions.https.onRequest(handle);
 }

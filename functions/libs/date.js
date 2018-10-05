@@ -1,7 +1,7 @@
 const moment = require('moment');
 
 function getDataWithFormat(format, date = false) {
-  return moment(date ? date : new Date()).format(format);
+  return moment(date || new Date()).format(format);
 }
 
 function getDifferenceInWeeksToToday(date) {

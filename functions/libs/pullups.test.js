@@ -5,5 +5,6 @@ describe('Pullups functions', () => {
     const set = createSet(4, 16, 12);
     expect(set.length).toBeDefined();
     expect(set.length).toBeGreaterThan(0);
+    set.map(n => expect(typeof n).toBe('number'));
   });
 });

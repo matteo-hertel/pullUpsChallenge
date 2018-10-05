@@ -4,15 +4,14 @@ const config = require('./../config');
 const { processCacheUpdate } = require('./../libs/cache');
 
 function cacheData(admin) {
-  const getCache = () => {
-    return admin
+  const getCache = () =>
+    admin
       .firestore()
       .collection(`pullupTracking`)
       .doc(config.env)
       .collection('cache')
       .doc('appCache')
       .get();
-  };
   const emptyPromise = Promise.resolve(null);
   return functions.firestore
     .document(`pullupTracking/${config.env}/pullups/{uuid}`)

@@ -24,15 +24,11 @@ function todoistWebhook(admin) {
       .get()
       .then(getCollectionDocs)
       .then(getFirst)
-      .then(doc => {
-        return doc.ref.set(setAppropriateKey(event_name), { merge: true });
-      })
-      .then(doc => {
-        return res.status(200).send();
-      })
+      .then(doc => doc.ref.set(setAppropriateKey(event_name), { merge: true }))
+      .then(doc => res.status(200).send())
       .catch(exc => {
         console.error(exc, { event_name, id });
-        //return 200 for the webhooks
+        // return 200 for the webhooks
         return res.status(200).send();
       });
   }

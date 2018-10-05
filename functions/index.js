@@ -1,5 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+
 admin.initializeApp();
 
 const { addSet, addSetPeek } = require('./handlers/addSet');
@@ -9,7 +10,7 @@ const cacheData = require('./handlers/cacheData');
 const createTodoist = require('./handlers/createTodoist');
 const todoistWebhook = require('./handlers/todoistWebhook');
 
-exports.addSet = addSet();
+exports.addSet = addSet(admin);
 exports.addSetPeek = addSetPeek();
 exports.bustCache = bustCache(admin);
 exports.cacheAll = cacheAll(admin);

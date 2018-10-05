@@ -15,7 +15,7 @@ function reduceStatusesFromTask(task) {
   };
 }
 function processCacheUpdate(storedCache, task) {
-  const cache = storedCache ? storedCache : makeAppCache();
+  const cache = storedCache || makeAppCache();
 
   const cacheUpdate = POSSIBLE_STATUS.reduce(
     reduceStatusesFromTask(task),

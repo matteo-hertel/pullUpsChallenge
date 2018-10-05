@@ -6,6 +6,7 @@ const {
 } = require('./date');
 
 const MockDate = require('mockdate');
+
 const fixeDate = 1520208000000;
 beforeAll(() => {
   MockDate.set(fixeDate);

@@ -3,35 +3,29 @@ const functions = require('firebase-functions');
 const config = require('./../config');
 
 function bustCache(admin) {
-  const getTasks = () => {
-    return admin
+  const getTasks = () =>
+    admin
       .firestore()
       .collection(`pullupTracking`)
       .doc(config.env)
       .collection('pullups');
-  };
-  const deleteCacheDocument = () => {
-    return admin
+  const deleteCacheDocument = () =>
+    admin
       .firestore()
       .collection(`pullupTracking`)
       .doc(config.env)
       .collection('cache')
       .doc('appCache')
       .delete();
-  };
   function handle(req, res) {
     return getTasks()
       .get()
       .then(getCollectionDocs)
-      .then(docs => {
-        return docs.map(doc => doc.ref.set({ cached: false }, { merge: true }));
-      })
-      .then(() => {
-        return deleteCacheDocument();
-      })
-      .then(doc => {
-        return res.status(200).send();
-      })
+      .then(docs =>
+        docs.map(doc => doc.ref.set({ cached: false }, { merge: true })),
+      )
+      .then(() => deleteCacheDocument())
+      .then(doc => res.status(200).send())
       .catch(exc => {
         console.error(exc);
         return res.status(500).send();

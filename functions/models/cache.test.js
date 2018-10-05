@@ -5,11 +5,10 @@ const {
   appCacheModel,
 } = require('./cache');
 
-const getDiffentKeys = keys => {
-  return function(key) {
-    return keys.indexOf(key) === -1 ? true : false;
+const getDiffentKeys = keys =>
+  function(key) {
+    return keys.indexOf(key) === -1;
   };
-};
 describe('Cache model', () => {
   it('should not contain extraneous keys in taskCacheModel', () => {
     const unsanitisedObject = {

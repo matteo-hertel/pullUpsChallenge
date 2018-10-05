@@ -10,14 +10,14 @@ function createTodoist(admin) {
     .onCreate((snap, context) => {
       const data = snap.data();
 
-      return createPullupsTask(data.amount).then(taskId => {
-        return snap.ref.set(
+      return createPullupsTask(data.amount).then(taskId =>
+        snap.ref.set(
           {
             todoistID: taskId,
           },
           { merge: true },
-        );
-      });
+        ),
+      );
     });
 }
 module.exports = createTodoist;
