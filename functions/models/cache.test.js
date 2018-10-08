@@ -21,7 +21,7 @@ describe('Cache model', () => {
     const cache = makeTaskCache(unsanitisedObject);
 
     expect(
-      Object.keys(cache).filter(getDiffentKeys(Object.keys(taskCacheModel))),
+      Object.keys(cache).filter(getDiffentKeys(Object.keys(taskCacheModel)))
     ).toHaveLength(0);
   });
 
@@ -37,7 +37,7 @@ describe('Cache model', () => {
 
     const finalUpdate = makeTaskCache({ rejected: 0 }, update2);
     Object.keys(finalForm).map(k =>
-      expect(finalUpdate[k]).toEqual(finalForm[k]),
+      expect(finalUpdate[k]).toEqual(finalForm[k])
     );
   });
   it('should be able to make a cache without extension object', () => {
@@ -58,7 +58,7 @@ describe('Cache model', () => {
     const cache = makeAppCache(unsanitisedObject);
 
     expect(
-      Object.keys(cache).filter(getDiffentKeys(Object.keys(appCacheModel))),
+      Object.keys(cache).filter(getDiffentKeys(Object.keys(appCacheModel)))
     ).toHaveLength(0);
   });
 
@@ -75,7 +75,7 @@ describe('Cache model', () => {
 
     const finalUpdate = makeAppCache({ rejected: 0 }, update2);
     Object.keys(finalForm).map(k =>
-      expect(finalUpdate[k]).toEqual(finalForm[k]),
+      expect(finalUpdate[k]).toEqual(finalForm[k])
     );
   });
   it('should be able to make a cache without extension object', () => {

@@ -21,7 +21,7 @@ describe('Pullups model', () => {
     const set = makePullup(unsanitisedObject);
 
     expect(
-      Object.keys(set).filter(getDiffentKeys(Object.keys(pullupModel))),
+      Object.keys(set).filter(getDiffentKeys(Object.keys(pullupModel)))
     ).toHaveLength(0);
   });
 
@@ -38,7 +38,7 @@ describe('Pullups model', () => {
 
     const finalUpdate = makePullup({ todoistID: finalForm.todoistID }, update2);
     Object.keys(finalForm).map(k =>
-      expect(finalUpdate[k]).toEqual(finalForm[k]),
+      expect(finalUpdate[k]).toEqual(finalForm[k])
     );
   });
   it('should be able to make an set without extension object', () => {

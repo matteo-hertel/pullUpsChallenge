@@ -15,7 +15,7 @@ function makeCache(base) {
   return function extendBaseModel(extensionObject = {}, baseModel = base) {
     const cleanObject = omit(
       extensionObject,
-      differenceWith(Object.keys(extensionObject), Object.keys(taskCacheModel)),
+      differenceWith(Object.keys(extensionObject), Object.keys(taskCacheModel))
     );
     return merge({}, baseModel, cleanObject);
   };

@@ -22,7 +22,7 @@ function bustCache(admin) {
       .get()
       .then(getCollectionDocs)
       .then(docs =>
-        docs.map(doc => doc.ref.set({ cached: false }, { merge: true })),
+        docs.map(doc => doc.ref.set({ cached: false }, { merge: true }))
       )
       .then(() => deleteCacheDocument())
       .then(() => res.status(200).send())
