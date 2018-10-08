@@ -14,8 +14,8 @@ function createTodoist() {
           {
             todoistID: taskId,
           },
-          { merge: true },
-        ),
+          { merge: true }
+        )
       );
     });
 }

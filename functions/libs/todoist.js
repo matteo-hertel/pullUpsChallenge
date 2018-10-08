@@ -41,7 +41,7 @@ function addReminder(task) {
 }
 function generateDeadline() {
   return `Today at ${generateRandomInteger(startHour, endHour)}:${padTime(
-    generateRandomInteger(0, 59),
+    generateRandomInteger(0, 59)
   )} pm`;
 }
 function padTime(time) {

@@ -15,7 +15,7 @@ const pullupModel = {
 function makePullup(extensionObject = {}, baseModel = pullupModel) {
   const cleanObject = omit(
     extensionObject,
-    differenceWith(Object.keys(extensionObject), Object.keys(pullupModel)),
+    differenceWith(Object.keys(extensionObject), Object.keys(pullupModel))
   );
   return merge({}, baseModel, cleanObject);
 }
