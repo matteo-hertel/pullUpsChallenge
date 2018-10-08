@@ -5,7 +5,6 @@ const {
   end_hour,
   env,
   lower_treshold,
-  start_date,
   start_hour,
   todoist: { token },
   todoist_project,

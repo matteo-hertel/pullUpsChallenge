@@ -25,7 +25,7 @@ function bustCache(admin) {
         docs.map(doc => doc.ref.set({ cached: false }, { merge: true })),
       )
       .then(() => deleteCacheDocument())
-      .then(doc => res.status(200).send())
+      .then(() => res.status(200).send())
       .catch(exc => {
         console.error(exc);
         return res.status(500).send();

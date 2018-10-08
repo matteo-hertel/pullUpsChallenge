@@ -24,7 +24,7 @@ function addSetPeek() {
     const sets = makeSet();
 
     return Promise.resolve()
-      .then(snapshots => res.status(200).send(sets))
+      .then(() => res.status(200).send(sets))
       .catch(() => res.status(500).send());
   }
 }
@@ -40,10 +40,10 @@ function addSet(admin) {
   function handle(req, res) {
     const noWorkoutOnSunday = resolveEmptyOnCondition(!new Date().getDay(), []);
 
-    const sets = noWorkoutOnSunday(() => makeSet().map(pushToDb));
+    noWorkoutOnSunday(() => makeSet().map(pushToDb));
 
     return Promise.resolve()
-      .then(snapshots => res.status(200).send())
+      .then(() => res.status(200).send())
       .catch(() => res.status(500).send());
   }
   return functions.https.onRequest(handle);

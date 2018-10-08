@@ -50,7 +50,7 @@ function cacheAll(admin) {
     return Promise.all([getCacheData(), getUncachedTasksRef()])
       .then(reduceTasksToCache)
       .then(mergeWithDb)
-      .then(doc => res.status(200).send())
+      .then(() => res.status(200).send())
       .catch(exc => {
         console.error('Unnecessary Call to Cache All', exc);
         return res.status(200).send();

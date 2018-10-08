@@ -1,9 +1,6 @@
 const functions = require('firebase-functions');
 
-const { unary } = require('lodash');
 const config = require('./../config');
-const { createSet } = require('./../libs/pullups');
-const { makePullup } = require('./../models/pullups');
 
 function todoistWebhook(admin) {
   const getTask = id => {
@@ -25,7 +22,7 @@ function todoistWebhook(admin) {
       .then(getCollectionDocs)
       .then(getFirst)
       .then(doc => doc.ref.set(setAppropriateKey(event_name), { merge: true }))
-      .then(doc => res.status(200).send())
+      .then(() => res.status(200).send())
       .catch(exc => {
         console.error(exc, { event_name, id });
         // return 200 for the webhooks

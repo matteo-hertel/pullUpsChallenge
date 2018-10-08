@@ -7,7 +7,6 @@
     "no-console": "off",
     "no-regex-spaces": "off",
     "no-debugger": "off",
-    "no-unused-vars": "off",
     "no-mixed-spaces-and-tabs": "off",
     "no-undef": "off",
     "no-template-curly-in-string": 1,

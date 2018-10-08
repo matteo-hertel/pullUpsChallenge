@@ -2,7 +2,6 @@ const {
   getDataWithFormat,
   getDifferenceInWeeksToToday,
   toUnix,
-  getWeekNumer,
 } = require('./date');
 
 const MockDate = require('mockdate');

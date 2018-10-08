@@ -1,13 +1,12 @@
 const functions = require('firebase-functions');
 
-const { unary } = require('lodash');
 const config = require('./../config');
 const { createPullupsTask } = require('./../libs/todoist');
 
-function createTodoist(admin) {
+function createTodoist() {
   return functions.firestore
     .document(`pullupTracking/${config.env}/pullups/{uuid}`)
-    .onCreate((snap, context) => {
+    .onCreate(snap => {
       const data = snap.data();
 
       return createPullupsTask(data.amount).then(taskId =>

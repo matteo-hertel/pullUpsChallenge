@@ -1,8 +1,6 @@
 const {
-  taskCacheModel,
   makeTaskCache,
   makeAppCache,
-  appCacheModel,
   POSSIBLE_STATUS,
 } = require('./../models/cache');
 
