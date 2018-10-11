@@ -1,3 +1,5 @@
+jest.mock('./../config', () => ({}));
+
 const {
   generateRandomInteger,
   generateDeadline,
