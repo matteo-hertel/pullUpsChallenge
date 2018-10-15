@@ -24,7 +24,7 @@ function todoistWebhook(admin) {
       .then(doc => doc.ref.set(setAppropriateKey(event_name), { merge: true }))
       .then(() => res.status(200).send())
       .catch(exc => {
-        console.error(exc, { event_name, id });
+        console.log(exc, { event_name, id });
         // return 200 for the webhooks
         return res.status(200).send();
       });

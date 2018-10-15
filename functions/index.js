@@ -1,6 +1,8 @@
 const admin = require('firebase-admin');
 
 admin.initializeApp();
+const settings = { timestampsInSnapshots: true };
+admin.firestore().settings(settings);
 
 const { addSet, addSetPeek } = require('./handlers/addSet');
 const bustCache = require('./handlers/bustCache');
