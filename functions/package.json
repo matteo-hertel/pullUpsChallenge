@@ -26,7 +26,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "eslint-config-skyscanner-with-prettier": "^0.4.0",
+    "eslint-config-skyscanner-with-prettier": "^1.0.0",
     "mockdate": "^2.0.2"
   },
   "private": true
