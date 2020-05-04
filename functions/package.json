@@ -21,7 +21,7 @@
     "firebase-functions": "^2.0.5",
     "jest": "^23.6.0",
     "lodash": "^4.17.11",
-    "moment": "^2.22.2",
+    "moment": "^2.25.1",
     "todoist-js": "^0.3.1",
     "uuid": "^3.3.2"
   },
