@@ -15,7 +15,7 @@
     "@nuxtjs/dotenv": "^1.1.1",
     "@nuxtjs/pwa": "^2.0.8",
     "firebase": "^5.0.4",
-    "nuxt": "^1.0.0",
+    "nuxt": "^2.13.2",
     "vuetify": "^1.0.0",
     "vuexfire": "^2.3.0"
   },
