@@ -1,0 +1,46 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/app"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: vuetify
+    versions:
+    - 2.4.11
+    - 2.4.3
+    - 2.4.4
+    - 2.4.5
+    - 2.4.6
+    - 2.4.7
+    - 2.4.8
+    - 2.4.9
+  - dependency-name: nuxt
+    versions:
+    - 2.14.12
+    - 2.15.0
+    - 2.15.1
+    - 2.15.2
+    - 2.15.3
+  - dependency-name: eslint-plugin-html
+    versions:
+    - 6.1.1
+  - dependency-name: eslint-plugin-promise
+    versions:
+    - 4.2.1
+- package-ecosystem: npm
+  directory: "/functions"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: handlebars
+    versions:
+    - 4.7.6
+  - dependency-name: eslint-plugin-promise
+    versions:
+    - 4.2.1
